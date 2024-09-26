@@ -1,0 +1,77 @@
+/* Стили для браузера */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #abebc1;
+    padding-top: 80px; /* Отступ для фиксации header, т.е. "шапки"*/
+  }
+  
+  /* Header */
+  header {
+    position: fixed; /* Фиксированное позиционирование */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1d873b;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    z-index: 1000; /* Позволяет элементу "шапка" быть выше других */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Галерея карточек*/
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Адаптивная сетка с минимальной шириной карточек */
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  /* Карточка */
+  .card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card-image {
+    width: 100%;
+    height: auto;
+    overflow: hidden; /* Обрезка контента, если он выходит за пределы */
+    object-fit: cover;
+  }
+  
+  .card-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+  }
+  
+  .card-description {
+    font-size: 1rem;
+    color: #555;
+    margin: 0;
+  }
+  
+  /* Hover эффект для карточек */
+  .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    transition: 0.3s;
+  }
