@@ -1,77 +1,142 @@
 /* Стили для браузера */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #abebc1;
-    padding-top: 80px; /* Отступ для фиксации header, т.е. "шапки"*/
-  }
-  
-  /* Header */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Основной стиль страницы */
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: #abebc1;
+  padding-top: 80px; /* Отступ для фиксации header */
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Фиксированный header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1d873b;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  z-index: 1000; /* Позволяет элементу "шапка" быть выше других */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Основная галерея карточек */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  flex: 1 0 auto; /* Для обеспечения роста контента и отодвигания footer */
+}
+
+/* Стили карточек */
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.card-description {
+  font-size: 1rem;
+  color: #555;
+  margin: 0;
+}
+
+/* Hover эффект для карточек */
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  transition: 0.3s;
+}
+
+/* Стили футера */
+footer {
+  background-color: #1d873b;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-content p,
+.footer-content a {
+  margin: 5px 0;
+}
+
+.social-links a {
+  margin: 0 10px;
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  color: #ff0; /* Желтый цвет при наведении */
+}
+
+/* Медиазапрос для устройств шириной до 768px */
+@media (max-width: 768px) {
   header {
-    position: fixed; /* Фиксированное позиционирование */
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #1d873b;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    z-index: 1000; /* Позволяет элементу "шапка" быть выше других */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    background-color: #4a8f50; /* Изменяем цвет header */
   }
 
-  /* Галерея карточек*/
   .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Адаптивная сетка с минимальной шириной карточек */
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
-  
-  /* Карточка */
+}
+
+/* Медиазапрос для устройств шириной до 430px */
+@media (max-width: 430px) {
+  header {
+    background-color: #2b7b35; /* Ещё одно изменение цвета header */
+  }
+
   .card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    max-width: 100%; /* Карточка занимает всю ширину */
   }
-  
+
   .card-image {
-    width: 100%;
-    height: auto;
-    overflow: hidden; /* Обрезка контента, если он выходит за пределы */
-    object-fit: cover;
+    height: 200px; /* Уменьшенная высота изображения */
   }
-  
-  .card-content {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-grow: 1;
-  }
-  
-  .card-title {
-    font-size: 1.5rem;
-    margin-bottom: 5px;
-  }
-  
-  .card-description {
-    font-size: 1rem;
-    color: #555;
-    margin: 0;
-  }
-  
-  /* Hover эффект для карточек */
-  .card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    transform: translateY(-5px);
-    transition: 0.3s;
-  }
+}
